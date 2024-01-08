@@ -22,7 +22,7 @@ on:
       KERNEL_IMAGE_NAME:
         description: 'Kernel image name'
         required: true
-        default: 'Image'
+        default: 'Image.gz'
 
 jobs:
   build:
