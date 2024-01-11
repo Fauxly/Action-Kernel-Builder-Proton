@@ -44,7 +44,7 @@ jobs:
       run: |
         mkdir -p android && cd android
         git config --global advice.detachedHead false
-        git clone --depth=1 https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone -b ${{ github.event.inputs.PROTON_RELEASE }} ./tc/aosp-clang
+        git clone --depth=1 https://github.com/kdrag0n/proton-clang -b ${{ github.event.inputs.PROTON_RELEASE }} ./toolchains/proton-clang
 
     - name: Clone Kernel Tree
       run: |
@@ -58,7 +58,7 @@ jobs:
 
     - name: Build Kernel
       run: |
-        PATH="${GITHUB_WORKSPACE}/android/tc/aosp-clang/bin:/bin:$PATH"
+        PATH="${GITHUB_WORKSPACE}/android/toolchains/proton-clang/bin:/bin:$PATH"
         cd android/kernel
         ${{ env.MAKE }} ${{ github.event.inputs.KERNEL_DEFCONFIG }}
         ${{ env.MAKE }} -j"$(nproc --all)"
